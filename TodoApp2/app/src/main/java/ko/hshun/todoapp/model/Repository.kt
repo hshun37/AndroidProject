@@ -9,7 +9,7 @@ class Repository(context: Context) {
 
     fun getTextList() = db.todoDao().getAllData()
 
-    fun insertTextData(text: String) = db.todoDao().insert(TodoEntity(0, text))
+    fun insertTextData(text: String) = db.todoDao().insert(TodoEntity(0, text, false))
 
     fun deleteTextData() = db.todoDao().deleteAllData()
 }

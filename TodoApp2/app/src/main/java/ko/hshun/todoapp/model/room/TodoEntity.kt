@@ -12,4 +12,6 @@ data class TodoEntity (
     val id: Int,
     @ColumnInfo(name = "text")
     val text: String?,
+    @ColumnInfo(name = "check")
+    val check: Boolean?
 )

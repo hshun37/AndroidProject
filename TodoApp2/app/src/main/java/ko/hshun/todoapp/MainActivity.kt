@@ -23,31 +23,10 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val db = TodoDatabase.getDatabase(this)
 
-        /*CoroutineScope(Dispatchers.IO).launch {
-            val rv = binding.rv
-            val rvAdapter = TodoAdapter(baseContext, db.todoDao().getAllData())
-            rv.adapter = rvAdapter
-            rv.layoutManager = LinearLayoutManager(baseContext)
-
-            binding.check.setOnClickListener {
-                CoroutineScope(Dispatchers.IO).launch {
-                    val text = binding.todoPlus.text.toString()
-                    db.todoDao().insert(TodoEntity(0, text))
-                    binding.todoPlus.setText("")
-                }
-            }
-
-            binding.clear.setOnClickListener{
-                CoroutineScope(Dispatchers.IO).launch {
-                    db.todoDao().deleteAllData()
-                }
-            }
-        }*/
-
         binding.check.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 val text = binding.todoPlus.text.toString()
-                db.todoDao().insert(TodoEntity(0, text))
+                db.todoDao().insert(TodoEntity(0, text, false))
                 binding.todoPlus.setText("")
             }
         }

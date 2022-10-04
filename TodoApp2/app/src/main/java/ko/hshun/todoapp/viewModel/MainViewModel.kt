@@ -24,6 +24,6 @@ class MainViewModel(app:Application) : AndroidViewModel(app) {
     }
 
     fun insert(text: String) = viewModelScope.launch(Dispatchers.IO) {
-        db.todoDao().insert(TodoEntity(0, text))
+        db.todoDao().insert(TodoEntity(0, text, false))
     }
 }
