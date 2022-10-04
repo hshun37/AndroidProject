@@ -1,9 +1,13 @@
 package ko.hshun.todoapp.model.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface TodoDao {
+
+    @Query("SELECT * FROM todolist")
+    fun getLiveAllData(): LiveData<List<TodoEntity>>
 
     @Query("SELECT * FROM todolist")
     fun getAllData(): List<TodoEntity>
@@ -14,6 +18,7 @@ interface TodoDao {
     @Query("DELETE FROM todolist")
     fun deleteAllData()
 
-//    @Query("DELETE FROM todolist WHERE ")
+    @Delete
+    fun deleteSelect(TodoEntity: TodoEntity)
 
 }

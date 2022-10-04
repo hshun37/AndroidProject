@@ -1,12 +1,8 @@
 package ko.hshun.todoapp.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ko.hshun.todoapp.databinding.ItemTodoListBinding
 import ko.hshun.todoapp.model.room.TodoDatabase
@@ -24,7 +20,14 @@ class TodoAdapter(val context: Context, private val data: List<TodoEntity>) :
     }
 
     override fun onBindViewHolder(holder: TodoAdapter.ViewHolder, position: Int) {
+        val db = TodoDatabase.getDatabase(context)
         holder.binding.textView.text = data[position].text
+
+        holder.binding.delete.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                db.todoDao().deleteSelect(data[position])
+            }
+        }
     }
 
     override fun getItemCount(): Int {
