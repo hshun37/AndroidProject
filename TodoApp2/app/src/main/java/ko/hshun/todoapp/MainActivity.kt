@@ -2,6 +2,7 @@ package ko.hshun.todoapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,15 +24,20 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val db = TodoDatabase.getDatabase(this)
 
+
         binding.check.setOnClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                val text = binding.todoPlus.text.toString()
-                db.todoDao().insert(TodoEntity(0, text, false))
-                binding.todoPlus.setText("")
+            if (binding.todoPlus.text.toString().isEmpty()) {
+                Toast.makeText(this, "오늘의 할일을 입력하자!", Toast.LENGTH_SHORT).show()
+            } else {
+                CoroutineScope(Dispatchers.IO).launch {
+                    val text = binding.todoPlus.text.toString()
+                    db.todoDao().insert(TodoEntity(0, text, false))
+                    binding.todoPlus.setText("")
+                }
             }
         }
 
-        binding.clear.setOnClickListener{
+        binding.clear.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 db.todoDao().deleteAllData()
             }
