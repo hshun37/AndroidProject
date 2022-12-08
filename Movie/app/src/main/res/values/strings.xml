@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Movie</string>
+    <string name="title">CULTURE MOVIES</string>
+
+    <!-- 메뉴 -->
+    <string name="string_home">홈</string>
+    <string name="string_key">키워드</string>
+    <string name="string_zzim">찜</string>
+    <string name="string_search">검색</string>
+    <string name="string_mypage">내정보</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- 키워드(장르) -->
+    <string-array name="planets_array">
+        <item name="드라마">드라마</item>
+        <item name="판타지">판타지</item>
+        <item name="공포">공포</item>
+        <item name="로맨스">로맨스</item>
+        <item name="코미디">코미디</item>
+        <item name="전쟁">전쟁</item>
+        <item name="애니메이션">애니메이션</item>
+        <item name="범죄">범죄</item>
+        <item name="SF">SF</item>
+        <item name="액션">액션</item>
+    </string-array>
+
+
+</resources>
